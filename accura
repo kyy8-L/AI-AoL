@@ -20,7 +20,7 @@ def load_data():
 def train_model(df):
     X = df.drop('diabetes', axis=1)
     y = df['diabetes']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     model = DecisionTreeClassifier(random_state=42)
     model.fit(X_train, y_train)
     accuracy = accuracy_score(y_test, model.predict(X_test))
@@ -29,7 +29,7 @@ def train_model(df):
 # Set page configuration
 st.set_page_config(
     page_title="Diasense",
-    page_icon="🍎",
+    page_icon="favicon.ico",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -47,7 +47,7 @@ model, accuracy = train_model(df)
 if selected_page == "Home":
     st.title("Diasense : Diabetes Prediction App")
     st.markdown("### A powerful yet simple tool to predict diabetes.")
-    st.markdown("The model has an accuracy of **{:.2f}%**.".format(accuracy * 100))
+#    st.markdown("The model has an accuracy of **{:.2f}%**.".format(accuracy * 100))
 
     st.image("https://img.freepik.com/free-vector/diabetes-concept-illustration_114360-7396.jpg", width=700)
     
@@ -120,8 +120,8 @@ elif selected_page == "About":
     
     - **Built with:** Python, Streamlit, and Scikit-learn
     - **Author:** Your Name
-    - **Accuracy:** {:.2f}%
-    """.format(accuracy * 100))
+#    - **Accuracy:** {:.2f}%
+#    """.format(accuracy * 100))
 
     st.image("https://img.freepik.com/free-vector/healthy-lifestyle-concept-illustration_114360-11136.jpg", width=700)
 
