@@ -6,88 +6,6 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
 import numpy as np
 
-# Custom CSS untuk desain yang lebih baik dan smooth
-st.markdown("""
-    <style>
-        /* Overall background and typography */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f3f3f3;
-            transition: background-color 0.3s ease;
-        }
-        
-        /* Title */
-        .title {
-            text-align: center;
-            color: #FF6347;
-            font-size: 50px;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: color 0.3s ease;
-        }
-
-        /* Subtitle */
-        .subheader {
-            text-align: center;
-            color: #4B0082;
-            font-size: 28px;
-            margin-top: 20px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        /* Button Styling */
-        .stButton>button {
-            background-color: #FF6347;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 12px;
-            padding: 15px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        
-        .stButton>button:hover {
-            background-color: #FF4500;
-            transform: scale(1.1);
-        }
-        
-        /* Input Fields */
-        .stSelectbox>label, .stNumberInput>label {
-            color: #4B0082;
-            font-size: 16px;
-        }
-
-        /* Success/Error message */
-        .stSuccess {
-            background-color: #32CD32;
-            color: white;
-            font-weight: bold;
-        }
-        .stError {
-            background-color: #FF6347;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Styling for links */
-        .markdown-text a {
-            color: #4B0082;
-            text-decoration: none;
-        }
-
-        .markdown-text a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Animation for loading spinner */
-        .stSpinner {
-            color: #FF6347;
-            font-size: 20px;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
 # Load the dataset
 @st.cache_data
 def load_data():
@@ -102,45 +20,59 @@ def load_data():
 def train_model(df):
     X = df.drop('diabetes', axis=1)
     y = df['diabetes']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8, random_state=42)
     model = DecisionTreeClassifier(random_state=42)
     model.fit(X_train, y_train)
     accuracy = accuracy_score(y_test, model.predict(X_test))
     return model, accuracy
 
 # Main Streamlit app
-st.markdown('<h1 class="title">Diasense : Diabetes Prediction App</h1>', unsafe_allow_html=True)
+st.set_page_config(page_title="Diabetes Prediction App", layout="wide")
 
-# Information link
-st.markdown("""
-    <div class="markdown-text">
-        <p><b>Learn more about diabetes:</b><br>
-           <a href="https://www.halodoc.com/kesehatan/diabetes?srsltid=AfmBOorsQ7vTvKtoIXr5Fc1nJ-KugmkCNNgyMdyeWlqZuNX_OoWAig0P" target="_blank">Click here for more information.</a>
-        </p>
-    </div>
-""", unsafe_allow_html=True)
+# Sidebar
+with st.sidebar:
+    st.title("About This App")
+    st.markdown("""This app predicts whether a person has diabetes based on their health data.
+    It uses a machine learning model trained on a diabetes prediction dataset.
+    """)
+    st.markdown("### Quick Links")
+    st.markdown("[Learn More About Diabetes](https://www.halodoc.com/kesehatan/diabetes)")
 
 # Load data and train model
 df, le = load_data()
 model, accuracy = train_model(df)
 
-# User input form with smooth inputs
-st.markdown('<h2 class="subheader">Enter your health data:</h2>', unsafe_allow_html=True)
+# Header
+st.title("Diasense : Diabetes Prediction App")
+st.markdown("""### Enter your health data below to get a prediction.
+The model has an accuracy of **{:.2f}%** based on the training data.
+""".format(accuracy * 100))
 
-# User input components
-gender = st.selectbox("Gender", ["Male", "Female"])
-age = st.number_input("Age", min_value=0, max_value=120, value=25, step=1)
-hypertension = st.selectbox("Do you have hypertension?", ["No", "Yes"])
-heart_disease = st.selectbox("Do you have heart disease?", ["No", "Yes"])
-smoking_history = st.selectbox("Smoking history", ["Never", "Former", "Ever", "Current", "Not Current"])
-bmi = st.number_input("BMI", min_value=0.0, max_value=100.0, value=25.0, step=0.1)
-HbA1c_level = st.number_input("HbA1c Level", min_value=0.0, max_value=20.0, value=5.5, step=0.1)
-blood_glucose_level = st.number_input("Blood Glucose Level", min_value=0.0, max_value=500.0, value=100.0, step=1)
+# Input Form with Columns
+st.subheader("Your Health Information")
+col1, col2 = st.columns(2)
 
-# Add progress spinner for prediction
-with st.spinner('Calculating your prediction...'):
-    # Convert inputs to the model format
-    if st.button("Predict"):
+with col1:
+    gender = st.selectbox("Gender", ["Male", "Female"], help="Select your gender.")
+    age = st.slider("Age", min_value=0, max_value=120, value=25, help="Enter your age.")
+    hypertension = st.radio("Do you have hypertension?", ["No", "Yes"], horizontal=True)
+    heart_disease = st.radio("Do you have heart disease?", ["No", "Yes"], horizontal=True)
+
+with col2:
+    smoking_history = st.selectbox(
+        "Smoking history",
+        ["Never", "Former", "Ever", "Current", "Not Current"],
+        help="Select your smoking history."
+    )
+    bmi = st.slider("BMI", min_value=0.0, max_value=100.0, value=25.0, help="Enter your BMI.")
+    HbA1c_level = st.slider("HbA1c Level", min_value=0.0, max_value=20.0, value=5.5, help="Enter your HbA1c level.")
+    blood_glucose_level = st.slider(
+        "Blood Glucose Level", min_value=0.0, max_value=500.0, value=100.0, help="Enter your blood glucose level."
+    )
+
+# Convert inputs to the model format
+if st.button("Predict"):
+    with st.spinner("Predicting..."):
         gender_encoded = 0 if gender == "Male" else 1
         hypertension_encoded = 1 if hypertension == "Yes" else 0
         heart_disease_encoded = 1 if heart_disease == "Yes" else 0
@@ -153,12 +85,17 @@ with st.spinner('Calculating your prediction...'):
 
         # Prediction
         prediction = model.predict([input_data])[0]
-        if prediction == 1:
-            st.error("Oh noooo, you got diabetes :(")
-        else:
-            st.success("You're safe :)")
 
-# Visualize Data (Bonus: You can visualize the distribution of diabetes in the dataset)
-fig = px.histogram(df, x='age', color='diabetes', title="Age Distribution of Diabetes Cases")
-fig.update_layout(bargap=0.2)
-st.plotly_chart(fig, use_container_width=True)
+        st.markdown("---")
+        if prediction == 1:
+            st.error("\ud83d\ude22 Oh no, you might have diabetes. Please consult a doctor.")
+        else:
+            st.success("\ud83c\udf89 Great! You are not likely to have diabetes.")
+
+        # Show progress bar for user satisfaction
+        st.progress(100)
+
+# Footer
+st.markdown("---")
+st.markdown("### Disclaimer")
+st.markdown("This app is for informational purposes only and not a substitute for professional medical advice.")
