@@ -27,7 +27,7 @@ def train_model(df):
     return model, accuracy
 
 # Main Streamlit app
-st.title("Diasense Diabetes Prediction App")
+st.title("Diasense : Diabetes Prediction App")
 
 st.markdown("[Diabetes Explanation](https://www.halodoc.com/kesehatan/diabetes?srsltid=AfmBOorsQ7vTvKtoIXr5Fc1nJ-KugmkCNNgyMdyeWlqZuNX_OoWAig0P)")
 
