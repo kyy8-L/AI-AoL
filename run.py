@@ -48,6 +48,13 @@ st.markdown("""### Enter your health data below to get a prediction.""")
 #The model has an accuracy of **{:.2f}%** based on the training data.
 #""".format(accuracy * 100))
 
+st.set_page_config(
+    page_title="diasense",  
+    page_icon="favicon.ico",                      
+    layout="centered",                   
+    initial_sidebar_state="expanded" 
+)
+
 # Input Form with Columns
 st.subheader("Your Health Information")
 col1, col2 = st.columns(2)
