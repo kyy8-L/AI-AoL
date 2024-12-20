@@ -20,14 +20,14 @@ def load_data():
 def train_model(df):
     X = df.drop('diabetes', axis=1)
     y = df['diabetes']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     model = DecisionTreeClassifier(random_state=42)
     model.fit(X_train, y_train)
     accuracy = accuracy_score(y_test, model.predict(X_test))
     return model, accuracy
 
 # Main Streamlit app
-st.title("Diasense: Diabetes Prediction App")
+st.title("Diasense Diabetes Prediction App")
 
 st.markdown("[Diabetes Explanation](https://www.halodoc.com/kesehatan/diabetes?srsltid=AfmBOorsQ7vTvKtoIXr5Fc1nJ-KugmkCNNgyMdyeWlqZuNX_OoWAig0P)")
 
