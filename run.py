@@ -50,7 +50,7 @@ st.markdown("""### Enter your health data below to get a prediction.""")
 
 st.set_page_config(
     page_title="diasense",  
-    page_icon="favicon.ico",                      
+    #page_icon="favicon.ico",                      
     layout="centered",                   
     initial_sidebar_state="expanded" 
 )
