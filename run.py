@@ -120,8 +120,8 @@ elif selected_page == "About":
     
     - **Built with:** Python, Streamlit, and Scikit-learn
     - **Author:** Your Name
-#    - **Accuracy:** {:.2f}%
-#    """.format(accuracy * 100))
+    - **Accuracy:** {:.2f}%
+    """.format(accuracy * 100))
 
     st.image("https://img.freepik.com/free-vector/healthy-lifestyle-concept-illustration_114360-11136.jpg", width=700)
 
