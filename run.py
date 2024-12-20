@@ -42,10 +42,6 @@ with st.sidebar:
 df, le = load_data()
 model, accuracy = train_model(df)
 
-st.set_page_config(
-    page_icon="favicon.ico",  # Replace with your favicon file
-)
-
 # Header
 st.title("Diasense : Diabetes Prediction App")
 st.markdown("""### Enter your health data below to get a prediction.""")
