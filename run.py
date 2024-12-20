@@ -1,12 +1,10 @@
 import streamlit as st
-import plotly
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
 import numpy as np
-import plotly.express as px
 
 # Custom CSS untuk desain yang lebih baik dan smooth
 st.markdown("""
