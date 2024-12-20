@@ -35,7 +35,7 @@ st.markdown("[Diabetes Explanation](https://www.halodoc.com/kesehatan/diabetes?s
 # Load data and train model
 df, le = load_data()
 model, accuracy = train_model(df)
-//st.write(f"Model accuracy: {accuracy * 100:.2f}%")
+#st.write(f"Model accuracy: {accuracy * 100:.2f}%")
 
 # User input form
 st.subheader("Enter your health data:")
