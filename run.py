@@ -27,7 +27,12 @@ def train_model(df):
     return model, accuracy
 
 # Main Streamlit app
-st.set_page_config(page_title="Diabetes Prediction App", layout="wide")
+st.set_page_config(
+    page_title="diasense",  
+    page_icon="favicon.ico",                      
+    layout="centered",                   
+    initial_sidebar_state="expanded" 
+)
 
 # Sidebar
 with st.sidebar:
@@ -47,13 +52,6 @@ st.title("Diasense : Diabetes Prediction App")
 st.markdown("""### Enter your health data below to get a prediction.""")
 #The model has an accuracy of **{:.2f}%** based on the training data.
 #""".format(accuracy * 100))
-
-st.set_page_config(
-    page_title="diasense",  
-    #page_icon="favicon.ico",                      
-    layout="centered",                   
-    initial_sidebar_state="expanded" 
-)
 
 # Input Form with Columns
 st.subheader("Your Health Information")
