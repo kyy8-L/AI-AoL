@@ -6,6 +6,60 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
 import numpy as np
 
+# Custom CSS untuk desain yang lebih baik
+st.markdown("""
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .title {
+            text-align: center;
+            color: #2F4F4F;
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .subheader {
+            color: #4B0082;
+            font-size: 30px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .stButton>button {
+            background-color: #ff6347;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            padding: 10px;
+        }
+        .stButton>button:hover {
+            background-color: #ff4500;
+        }
+        .stSelectbox>label {
+            color: #4B0082;
+            font-size: 16px;
+        }
+        .stNumberInput>label {
+            color: #4B0082;
+            font-size: 16px;
+        }
+        .markdown-text {
+            color: #4B0082;
+            font-size: 18px;
+        }
+        .stSuccess {
+            background-color: #32cd32;
+            color: white;
+        }
+        .stError {
+            background-color: #ff6347;
+            color: white;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Load the dataset
 @st.cache_data
 def load_data():
@@ -27,18 +81,23 @@ def train_model(df):
     return model, accuracy
 
 # Main Streamlit app
-st.title("Diasense : Diabetes Prediction App")
+st.markdown('<h1 class="title">Diasense : Diabetes Prediction App</h1>', unsafe_allow_html=True)
 
-st.markdown("[Diabetes Explanation](https://www.halodoc.com/kesehatan/diabetes?srsltid=AfmBOorsQ7vTvKtoIXr5Fc1nJ-KugmkCNNgyMdyeWlqZuNX_OoWAig0P)")
-
+st.markdown("""
+    <div class="markdown-text">
+        <p>
+            <b>Learn more about diabetes:</b><br>
+            <a href="https://www.halodoc.com/kesehatan/diabetes?srsltid=AfmBOorsQ7vTvKtoIXr5Fc1nJ-KugmkCNNgyMdyeWlqZuNX_OoWAig0P" target="_blank">Click here for more information.</a>
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
 # Load data and train model
 df, le = load_data()
 model, accuracy = train_model(df)
-#st.write(f"Model accuracy: {accuracy * 100:.2f}%")
 
 # User input form
-st.subheader("Enter your health data:")
+st.markdown('<h2 class="subheader">Enter your health data:</h2>', unsafe_allow_html=True)
 
 gender = st.selectbox("Gender", ["Male", "Female"])
 age = st.number_input("Age", min_value=0, max_value=120, value=25)
