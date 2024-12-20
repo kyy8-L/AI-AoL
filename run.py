@@ -44,7 +44,7 @@ model, accuracy = train_model(df)
 
 # Header
 st.title("Diasense : Diabetes Prediction App")
-st.markdown("""### Enter your health data below to get a prediction.
+#st.markdown("""### Enter your health data below to get a prediction.
 The model has an accuracy of **{:.2f}%** based on the training data.
 """.format(accuracy * 100))
 
