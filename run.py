@@ -34,6 +34,80 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Custom CSS for Styling
+st.markdown("""
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Jost', sans-serif;
+        }
+
+        /* Gradient Text for Headers */
+        .gradient-text {
+            font-weight: bold;
+            background: -webkit-linear-gradient(left, #FF6F61, #32CD32, #6A5ACD);
+            background: linear-gradient(to right, #FF6F61, #32CD32, #6A5ACD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3em;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        /* Animated Gradient Header */
+        @keyframes gradientMove {
+            0% {background-position: 0%;}
+            50% {background-position: 100%;}
+            100% {background-position: 0%;}
+        }
+
+        .animated-gradient {
+            font-weight: bold;
+            font-size: 2.5em;
+            text-align: center;
+            background: linear-gradient(90deg, #FF5722, #FF4081, #6A5ACD, #32CD32);
+            background-size: 300% 300%;
+            animation: gradientMove 5s infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Subheaders */
+        .subheader {
+            font-size: 1.5em;
+            color: #FF4081;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons Styling */
+        .stButton button {
+            background: linear-gradient(to right, #FF4081, #6A5ACD);
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .stButton button:hover {
+            background: linear-gradient(to right, #6A5ACD, #32CD32);
+            transform: scale(1.05);
+        }
+
+        /* Sidebar Styling */
+        .sidebar-header {
+            font-size: 1.3em;
+            color: #FF6F61;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Sidebar Navigation
 st.sidebar.title("Navigation")
 pages = ["Home", "Explore Data", "About"]
@@ -43,94 +117,11 @@ selected_page = st.sidebar.radio("Go to", pages)
 df, le = load_data()
 model, accuracy = train_model(df)
 
-# Custom CSS for Gradient Text and Beautiful UI Enhancements
-st.markdown("""
-    <style>
-        /* Gradient text for headers */
-        .gradient-text {
-            background: -webkit-linear-gradient(45deg, #FF6F61, #6A5ACD, #32CD32, #FF4081);
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: bold;
-            font-size: 36px;
-        }
-
-        h1, h2, h3 {
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* Button Styling */
-        .stButton button {
-            background-color: #FF5722;
-            color: white;
-            font-weight: bold;
-            padding: 12px 30px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .stButton button:hover {
-            background-color: #D84315;
-        }
-
-        /* Animation for the headers */
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0%;
-            }
-            50% {
-                background-position: 100%;
-            }
-            100% {
-                background-position: 0%;
-            }
-        }
-
-        /* Animated gradient text for headers */
-        .animated-gradient {
-            background: linear-gradient(45deg, #ff6a00, #ee0979, #ff6a00);
-            background-size: 200% 200%;
-            animation: gradientAnimation 3s ease infinite;
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: bold;
-            font-size: 40px;
-        }
-        
-        /* Custom Font for the body */
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: #4CAF50;
-        }
-
-        /* Colorful regular text */
-        .colorful-text {
-            color: #FF4081;
-            font-weight: bold;
-        }
-
-        /* Subheaders with gradient effect */
-        h2 {
-            color: #FF4081;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(90deg, #FF6F61, #32CD32);
-            -webkit-background-clip: text;
-            color: transparent;
-            font-size: 32px;
-            font-weight: bold;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
 # Home Page
 if selected_page == "Home":
-    st.markdown("<h1 class='animated-gradient'>Diasense : Diabetes Prediction App</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 class='gradient-text'>A powerful yet simple tool to predict diabetes.</h3>", unsafe_allow_html=True)
-    st.subheader("Your Health Information")
-    st.markdown("[Information about Diabetes](https://www.halodoc.com/kesehatan/diabetes)")
+    st.markdown("<h1 class='gradient-text'>Welcome to Diasense</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 class='subheader'>Your go-to app for diabetes prediction and insights</h3>", unsafe_allow_html=True)
+
     col1, col2 = st.columns(2)
 
     with col1:
@@ -199,7 +190,7 @@ elif selected_page == "About":
     Diasense is a simple app that helps predict the likelihood of diabetes using user input data.
     
     - **Built with:** Python, Streamlit, and Scikit-learn
-    - **Author:** Jip Tyrone, Emanuel, Sofyan
+    - **Authors:** Jip Tyrone, Emanuel, Sofyan
     """, unsafe_allow_html=True)
     
     st.image("https://img.freepik.com/free-vector/healthy-lifestyle-concept-illustration_114360-11136.jpg", width=400)
