@@ -126,7 +126,7 @@ elif selected_page == "About":
 #    - **Accuracy:** {:.2f}%
 #   .format(accuracy * 100))
 
-    st.image("https://img.freepik.com/free-vector/healthy-lifestyle-concept-illustration_114360-11136.jpg", width=700)
+    st.image("https://img.freepik.com/free-vector/healthy-lifestyle-concept-illustration_114360-11136.jpg", width=400)
 
     st.markdown("### Disclaimer")
     st.markdown("This app is for informational purposes only and should not be used as a substitute for medical advice.")
