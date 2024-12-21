@@ -43,10 +43,29 @@ selected_page = st.sidebar.radio("Go to", pages)
 df, le = load_data()
 model, accuracy = train_model(df)
 
+# Custom CSS for Gradient Text
+st.markdown("""
+    <style>
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #ff6a00, #ee0979);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+        h1, h3 {
+            text-align: center;
+        }
+        .container {
+            text-align: center;
+            color: #4CAF50;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Home Page
 if selected_page == "Home":
-    st.markdown("<h1 style='text-align: center; color: #4CAF50;'>Diasense : Diabetes Prediction App</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #FF5722;'>A powerful yet simple tool to predict diabetes.</h3>", unsafe_allow_html=True)
+    st.markdown("<h1 class='gradient-text'>Diasense : Diabetes Prediction App</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 class='gradient-text'>A powerful yet simple tool to predict diabetes.</h3>", unsafe_allow_html=True)
 
     st.subheader("Your Health Information")
     col1, col2 = st.columns(2)
@@ -93,7 +112,7 @@ if selected_page == "Home":
 
 # Explore Data Page
 elif selected_page == "Explore Data":
-    st.markdown("<h1 style='text-align: center; color: #FF5722;'>Explore Diabetes Dataset</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='gradient-text'>Explore Diabetes Dataset</h1>", unsafe_allow_html=True)
     st.markdown("Here’s a sneak peek into the data used for prediction.")
     st.dataframe(df.head())
 
@@ -112,7 +131,7 @@ elif selected_page == "Explore Data":
 
 # About Page
 elif selected_page == "About":
-    st.markdown("<h1 style='text-align: center; color: #4CAF50;'>About Diasense</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='gradient-text'>About Diasense</h1>", unsafe_allow_html=True)
     st.markdown("""
     Diasense is a simple app that helps predict the likelihood of diabetes using user input data.
     
@@ -128,4 +147,3 @@ elif selected_page == "About":
 # Footer
 st.markdown("---")
 st.markdown("© 2024 Diasense | Built with 💖 and Python")
-
