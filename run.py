@@ -43,28 +43,78 @@ selected_page = st.sidebar.radio("Go to", pages)
 df, le = load_data()
 model, accuracy = train_model(df)
 
-# Custom CSS for Gradient Text
+# Custom CSS for Gradient Text and Beautiful UI Enhancements
 st.markdown("""
     <style>
+        /* Gradient text for headers */
         .gradient-text {
-            background: -webkit-linear-gradient(45deg, #ff6a00, #ee0979);
+            background: -webkit-linear-gradient(45deg, #FF6F61, #6A5ACD, #32CD32);
             -webkit-background-clip: text;
             color: transparent;
             font-weight: bold;
+            font-size: 36px;
         }
-        h1, h3 {
+
+        h1, h3, h2 {
             text-align: center;
         }
-        .container {
-            text-align: center;
-            color: #4CAF50;
+
+        /* Button Styling */
+        .stButton button {
+            background-color: #FF5722;
+            color: white;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .stButton button:hover {
+            background-color: #D84315;
+        }
+
+        /* Styling for Subheader */
+        h2 {
+            color: #FF4081;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Animation for the headers */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0%;
+            }
+            50% {
+                background-position: 100%;
+            }
+            100% {
+                background-position: 0%;
+            }
+        }
+
+        /* Animated gradient text */
+        .animated-gradient {
+            background: linear-gradient(45deg, #ff6a00, #ee0979, #ff6a00);
+            background-size: 200% 200%;
+            animation: gradientAnimation 3s ease infinite;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            font-size: 40px;
+        }
+        
+        /* Custom Font */
+        body {
+            font-family: 'Roboto', sans-serif;
         }
     </style>
 """, unsafe_allow_html=True)
 
 # Home Page
 if selected_page == "Home":
-    st.markdown("<h1 class='gradient-text'>Diasense : Diabetes Prediction App</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='animated-gradient'>Diasense : Diabetes Prediction App</h1>", unsafe_allow_html=True)
     st.markdown("<h3 class='gradient-text'>A powerful yet simple tool to predict diabetes.</h3>", unsafe_allow_html=True)
 
     st.subheader("Your Health Information")
