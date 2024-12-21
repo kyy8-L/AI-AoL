@@ -110,7 +110,7 @@ elif selected_page == "Explore Data":
 
     st.subheader("Diabetes Outcome")
     diabetes_counts = df['diabetes'].value_counts()
-    st.pie_chart(diabetes_counts)
+    st.pie_chart(diabetes_counts.sort_values())
 
 # About Page
 elif selected_page == "About":
