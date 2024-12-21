@@ -122,7 +122,9 @@ elif selected_page == "About":
     Diasense is a simple app that helps predict the likelihood of diabetes using user input data.
     
     - **Built with:** Python, Streamlit, and Scikit-learn
-    - **Author:** Jip Tyrone, Emanuel, Sofyan
+    - **Author:** Jip Tyrone, Emanuel, Sofyan"""
+#    - **Accuracy:** {:.2f}%
+#   .format(accuracy * 100))
 
     st.image("https://img.freepik.com/free-vector/healthy-lifestyle-concept-illustration_114360-11136.jpg", width=700)
 
