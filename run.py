@@ -129,7 +129,7 @@ st.markdown("""
 if selected_page == "Home":
     st.markdown("<h1 class='animated-gradient'>Diasense : Diabetes Prediction App</h1>", unsafe_allow_html=True)
     st.markdown("<h3 class='gradient-text'>A powerful yet simple tool to predict diabetes.</h3>", unsafe_allow_html=True)
-    st.markdown("[Information about Diabetes](https://www.halodoc.com/kesehatan/diabetes)")
+    st.markdown("[Information about Diabetes](https://www.halodoc.com/kesehatan/diabetes)", unsafe_allow_html=True)
 
     st.subheader("Your Health Information")
     col1, col2 = st.columns(2)
