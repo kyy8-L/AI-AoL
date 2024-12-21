@@ -112,12 +112,9 @@ elif selected_page == "Explore Data":
 
     st.subheader("Diabetes Outcome")
     diabetes_counts = df['diabetes'].value_counts()
-    fig = px.pie(names=diabetes_counts.index, values=diabetes_counts, 
-                 title="Diabetes Outcome", 
-                 color=diabetes_counts.index, 
-                 color_discrete_sequence=["#66b3ff", "#99ff99"])
+    diabetes_counts = diabetes_counts.sort_values()  # Sort for better visualization
+    st.bar_chart(diabetes_counts)
 
-    st.plotly_chart(fig)
 
 # About Page
 elif selected_page == "About":
