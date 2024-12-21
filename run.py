@@ -6,7 +6,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
 
-
 # Load the dataset
 @st.cache_data
 def load_data():
@@ -46,12 +45,9 @@ model, accuracy = train_model(df)
 
 # Home Page
 if selected_page == "Home":
-    st.title("Diasense : Diabetes Prediction App")
-    st.markdown("### A powerful yet simple tool to predict diabetes.")
-#    st.markdown("The model has an accuracy of **{:.2f}%**.".format(accuracy * 100))
+    st.markdown("<h1 style='text-align: center; color: #4CAF50;'>Diasense : Diabetes Prediction App</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: #FF5722;'>A powerful yet simple tool to predict diabetes.</h3>", unsafe_allow_html=True)
 
-    st.image("https://img.freepik.com/free-vector/diabetes-concept-illustration_114360-7396.jpg", width=300)
-    
     st.subheader("Your Health Information")
     col1, col2 = st.columns(2)
 
@@ -97,7 +93,7 @@ if selected_page == "Home":
 
 # Explore Data Page
 elif selected_page == "Explore Data":
-    st.title("Explore Diabetes Dataset")
+    st.markdown("<h1 style='text-align: center; color: #FF5722;'>Explore Diabetes Dataset</h1>", unsafe_allow_html=True)
     st.markdown("Here’s a sneak peek into the data used for prediction.")
     st.dataframe(df.head())
 
@@ -114,18 +110,16 @@ elif selected_page == "Explore Data":
     diabetes_counts = diabetes_counts.sort_values()  # Sort for better visualization
     st.bar_chart(diabetes_counts)
 
-
 # About Page
 elif selected_page == "About":
-    st.title("About Diasense")
+    st.markdown("<h1 style='text-align: center; color: #4CAF50;'>About Diasense</h1>", unsafe_allow_html=True)
     st.markdown("""
     Diasense is a simple app that helps predict the likelihood of diabetes using user input data.
     
     - **Built with:** Python, Streamlit, and Scikit-learn
-    - **Author:** Jip Tyrone, Emanuel, Sofyan""")
-#    - **Accuracy:** {:.2f}%
-#   .format(accuracy * 100))
-
+    - **Author:** Jip Tyrone, Emanuel, Sofyan
+    """, unsafe_allow_html=True)
+    
     st.image("https://img.freepik.com/free-vector/healthy-lifestyle-concept-illustration_114360-11136.jpg", width=400)
 
     st.markdown("### Disclaimer")
@@ -134,3 +128,4 @@ elif selected_page == "About":
 # Footer
 st.markdown("---")
 st.markdown("© 2024 Diasense | Built with 💖 and Python")
+
