@@ -50,7 +50,7 @@ if selected_page == "Home":
     st.markdown("### A powerful yet simple tool to predict diabetes.")
 #    st.markdown("The model has an accuracy of **{:.2f}%**.".format(accuracy * 100))
 
-    st.image("https://img.freepik.com/free-vector/diabetes-concept-illustration_114360-7396.jpg", width=700)
+    st.image("https://img.freepik.com/free-vector/diabetes-concept-illustration_114360-7396.jpg", width=300)
     
     st.subheader("Your Health Information")
     col1, col2 = st.columns(2)
