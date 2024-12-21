@@ -5,7 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
+import plotly.express as px
+
 
 # Load the dataset
 @st.cache_data
@@ -111,7 +112,12 @@ elif selected_page == "Explore Data":
 
     st.subheader("Diabetes Outcome")
     diabetes_counts = df['diabetes'].value_counts()
-    st.pie_chart(diabetes_counts.sort_values())
+    fig = px.pie(names=diabetes_counts.index, values=diabetes_counts, 
+                 title="Diabetes Outcome", 
+                 color=diabetes_counts.index, 
+                 color_discrete_sequence=["#66b3ff", "#99ff99"])
+
+    st.plotly_chart(fig)
 
 # About Page
 elif selected_page == "About":
