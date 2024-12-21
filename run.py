@@ -171,7 +171,7 @@ if selected_page == "Home":
                 st.error("😢 Oh no, you might have diabetes. Please consult a doctor.")
             else:
                 st.success("🎉 Great! You are not likely to have diabetes.")
-            st.balloons()
+                st.balloons()
 
 # Explore Data Page
 elif selected_page == "Explore Data":
