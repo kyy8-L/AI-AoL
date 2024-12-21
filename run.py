@@ -98,6 +98,14 @@ st.markdown("""
             transform: scale(1.05);
         }
 
+        /* Green Color for Sliders */
+        .stSlider > div[data-baseweb="slider"] > div {
+            background: linear-gradient(to right, #32CD32, #98FB98);
+        }
+        .stSlider > div[data-baseweb="slider"] > div > div {
+            color: white !important;
+        }
+
         /* Sidebar Styling */
         .sidebar-header {
             font-size: 1.3em;
@@ -107,6 +115,7 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
