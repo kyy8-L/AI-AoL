@@ -48,15 +48,16 @@ st.markdown("""
     <style>
         /* Gradient text for headers */
         .gradient-text {
-            background: -webkit-linear-gradient(45deg, #FF6F61, #6A5ACD, #32CD32);
+            background: -webkit-linear-gradient(45deg, #FF6F61, #6A5ACD, #32CD32, #FF4081);
             -webkit-background-clip: text;
             color: transparent;
             font-weight: bold;
             font-size: 36px;
         }
 
-        h1, h3, h2 {
+        h1, h2, h3 {
             text-align: center;
+            font-family: 'Arial', sans-serif;
         }
 
         /* Button Styling */
@@ -75,12 +76,6 @@ st.markdown("""
             background-color: #D84315;
         }
 
-        /* Styling for Subheader */
-        h2 {
-            color: #FF4081;
-            font-family: 'Arial', sans-serif;
-        }
-
         /* Animation for the headers */
         @keyframes gradientAnimation {
             0% {
@@ -94,7 +89,7 @@ st.markdown("""
             }
         }
 
-        /* Animated gradient text */
+        /* Animated gradient text for headers */
         .animated-gradient {
             background: linear-gradient(45deg, #ff6a00, #ee0979, #ff6a00);
             background-size: 200% 200%;
@@ -105,9 +100,27 @@ st.markdown("""
             font-size: 40px;
         }
         
-        /* Custom Font */
+        /* Custom Font for the body */
         body {
             font-family: 'Roboto', sans-serif;
+            color: #4CAF50;
+        }
+
+        /* Colorful regular text */
+        .colorful-text {
+            color: #FF4081;
+            font-weight: bold;
+        }
+
+        /* Subheaders with gradient effect */
+        h2 {
+            color: #FF4081;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(90deg, #FF6F61, #32CD32);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 32px;
+            font-weight: bold;
         }
     </style>
 """, unsafe_allow_html=True)
